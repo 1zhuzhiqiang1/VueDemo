@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <script src="../../assets/js/vue.js"></script>
+
+</head>
+<body>
+<h1>记分器</h1>
+<div id="box">
+    <button v-on:click="add">加分</button>
+    <button @click="sub">减分</button>
+    <span>总分数是：</span><input type="text" v-model="score" v-on:keyup.enter="enter">
+</div>
+
+<script>
+    var app = new Vue({
+        el: "#box",
+        data: {
+            score: 0
+        },
+        methods: {
+            add: function () {
+                this.score++;
+            },
+            sub: function () {
+                this.score--;
+            },
+            enter: function () {
+                this.score += 2;
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

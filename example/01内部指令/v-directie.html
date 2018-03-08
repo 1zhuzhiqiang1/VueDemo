@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+
+<h1>自定义指令</h1>
+
+<div id="app">
+
+    <div v-zzq="color">{{num}}</div>
+    <p>
+        <button @click="add">增加</button>
+    </p>
+    <p>
+        <button @click="unbind">解绑</button>
+    </p>
+
+</div>
+
+<script>
+
+    // Vue.directive("zzq", function (el, binding) {
+    //     el.style="color:"+binding.value+";font-size:25px";
+    // });
+
+    Vue.directive("zzq", {
+        bind: function () {//被绑定
+            console.log('1 - bind');
+        },
+        inserted: function () {//绑定到节点
+            console.log('2 - inserted');
+        },
+        update: function () {//组件更新
+            console.log('3 - update');
+        },
+        componentUpdated: function () {//组件更新完成
+            console.log('4 - componentUpdated');
+        },
+        unbind: function () {//解绑
+            console.log('5 - unbind');
+        }
+    });
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 0,
+            color: "blue"
+        },
+        methods: {
+            add: function () {
+                this.num++;
+            },
+            unbind: function () {
+                app.$destroy();
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

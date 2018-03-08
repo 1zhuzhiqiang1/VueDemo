@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <script src="../../assets/js/vue.js"></script>
+
+</head>
+<body>
+
+<h1>v-model用法</h1>
+
+<div id="box">
+    <h3>文本框</h3>
+    <span>双向数据绑定</span>
+    <p><span>{{model}}</span></p>
+    <p>v-model：<input type="text" v-model="model"></p>
+    <p>v-model.lazy: <input type="text" v-model.lazy="model"></p>
+    <p>v-model.number: <input type="text" v-model.number="model"></p>
+    <p>v-model.trim: <input type="text" v-model.trim="model"></p>
+
+    <h3>文本域</h3>
+    <textarea cols="30" rows="10" v-model="mdoel"></textarea>
+
+    <h3>多选框绑定一个值</h3>
+    <input id="isTrue" type="checkbox" v-model="isTrue">
+    <label for="isTrue">{{isTrue}}</label>
+
+    <h3>多选框绑定一个数组</h3>
+    <p>
+        <label for="name_0">小明</label><input id="name_0" type="checkbox" v-model="names" value="小明">
+        <label for="name_1">小青</label><input id="name_1" type="checkbox" v-model="names" value="小青">
+        <label for="name_2">小白</label><input id="name_2" type="checkbox" v-model="names" value="小白">
+    </p>
+    <p>{{names}}</p>
+
+    <h3>单选按钮的双向数据绑定</h3>
+    <p>
+        <label for="radio_0">男</label>
+        <input id="radio_0" type="radio" value="男" v-model="sex">
+        <label for="radio_1">女</label>
+        <input id="radio_1" type="radio" value="女" v-model="sex">
+    </p>
+    <p>您选择的性别是:{{sex}}</p>
+
+</div>
+
+<script>
+    var app = new Vue({
+        el: "#box",
+        data: {
+            model: "123",
+            isTrue: true,
+            names: [],
+            sex: "男"
+        }
+    });
+</script>
+
+</body>
+</html>

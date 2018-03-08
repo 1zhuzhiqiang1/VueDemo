@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-pre & v-cloak & v-once</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+
+<h1>v-pre & v-cloak & v-once 示例</h1>
+
+<div v-cloak id="app">
+
+    <h3>1. v-pre</h3>
+    <p><span>{{message}}</span></p>
+    <p><span v-pre>{{message}}</span></p>
+
+    <h3>2. v-cloak</h3>
+    <p><span v-cloak>bianLi</span></p>
+
+    <h3>v-once</h3>
+    <p><span v-once>{{message}}</span><input type="text" v-model="message"></p>
+
+</div>
+
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            message: "Hello Vue"
+        },
+        methods: {
+            bianLi: function () {
+                var result = 0;
+                for (var i = 0; i < 1000; i++) {
+                    result += i;
+                }
+                return result;
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

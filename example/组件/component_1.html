@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初识组件_1</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>初识组件一>>>定义</h1>
+
+<div id="app">
+    <jspang></jspang>
+    <panda></panda>
+</div>
+
+<!--自定义组件-->
+<script>
+    Vue.component("jspang", {
+        template: "`" +
+        "<div style=''>我是全局的jspang组件</div>" +
+        "`"
+    });
+</script>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+            "panda": {
+                template: "`" +
+                "<div style='color: blue'>我是局部的panda组件</div>" +
+                "`"
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

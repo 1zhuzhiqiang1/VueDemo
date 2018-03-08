@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初识组件_14</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>初识组件四</h1>
+
+<div id="app">
+    <component :is="who"></component>
+    <p>
+        <button @click="clickBtn">切换</button>
+    </p>
+</div>
+
+<script>
+    var conponentA = {
+        template: `
+            <p style="color: red">我是TemplateA</p>
+        `
+    };
+
+    var conponentB = {
+        template: `
+            <p style="color: blue">我是TemplateB</p>
+        `
+    };
+
+    var conponentC = {
+        template: `
+            <p style="color: aqua">我是TemplateC</p>
+        `
+    };
+</script>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            who: "conponentA"
+        },
+        components: {
+            "conponentA": conponentA,
+            "conponentB": conponentB,
+            "conponentC": conponentC
+        },
+        methods: {
+            clickBtn: function () {
+                if (this.who === "conponentA") {
+                    this.who = "conponentB";
+                }
+                else if (this.who === "conponentB") {
+                    this.who = "conponentC";
+                }
+                else if (this.who === "conponentC") {
+                    this.who = "conponentA";
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

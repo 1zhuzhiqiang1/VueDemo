@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compute计算选项</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>计算选项</h1>
+
+<div id="app">
+    <p>price:{{newPrice}}</p>
+
+    <h3>新闻列表</h3>
+    <ol>
+        <li v-for="news of reserveNews">
+            <h4>{{news.title}}</h4>
+            <p>{{news.date}}</p>
+        </li>
+    </ol>
+
+</div>
+
+<script>
+
+    var newsList = [
+        {title: "新闻标题1", date: "2018/03/09"},
+        {title: "新闻标题2", date: "2018/03/09"},
+        {title: "新闻标题3", date: "2018/03/09"},
+        {title: "新闻标题4", date: "2018/03/09"}
+    ];
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            price: 100,
+            newsList: newsList
+        },
+        computed: { //计算属性
+            newPrice: function () {
+                return this.price = "¥" + this.price + "元";
+            },
+            reserveNews: function () {
+                return this.newsList.reverse();
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

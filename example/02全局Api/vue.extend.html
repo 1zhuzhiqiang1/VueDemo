@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.extend构造器的延伸</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>Vue.extend 拓展示例构造器</h1>
+
+<author></author>
+
+<script>
+
+    // 自定义拓展其
+    var authorExtend = Vue.extend({
+        template: "<p><a :href='authorUrl'>{{authorName}}</a></p>",
+        data: function () {
+            return {
+                authorName: "朱志强",
+                authorUrl: "http://jspang.com"
+            }
+        }
+    });
+
+    new authorExtend().$mount("author");
+
+</script>
+
+</body>
+</html>

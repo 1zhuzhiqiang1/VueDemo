@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template的三种写法之三</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>Template的三种写法之三</h1><br>
+
+<div id="app">
+
+</div>
+
+<!--可以实现外部引用-->
+<script type="x-template" id="dd3">
+    <h2>我是Template标签模板</h2>
+</script>
+
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: "Hello Vue"
+        },
+        template: "#dd3"
+    });
+
+</script>
+
+
+</body>
+</html>

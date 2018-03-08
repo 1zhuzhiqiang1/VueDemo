@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+
+<h1>v-bind使用</h1>
+
+<style>
+    .classB {
+        color: red;
+    }
+
+    .classA {
+        font-size: 25px;
+    }
+</style>
+
+<div id="app">
+    <img v-bind:src="imgSrc" alt="">
+
+    <h3>一、绑定class</h3>
+    <p><span :class="classAName">1.测试绑定Class</span></p>
+    <p><span :class="{classA:isOk}">2.动态判断Class</span></p>
+    <p><span :class="[classA,classB]">3.数组使用方式</span></p>
+    <p><span :class="isOk?classA:classB">4.三元运算符</span></p>
+
+    <h3>二、绑定URL</h3>
+    <p><a :href="webUrl" target="_blank">技术胖</a></p>
+
+    <h3>三、绑定style</h3>
+    <p><span :style="{color:blue}">1.绑定style</span></p>
+    <p><span :style="styleSubject">2.绑定style对象</span></p>
+
+</div>
+
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            imgSrc: "https://gss0.baidu.com/8_BXsjip0QIZ8tyhnq/timg?wh_rate=0&wapiknow&quality=100&size=w250&sec=0&di=7b0468bfb684b34110ac02e889b62be5&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fwh%253D800%252C450%2Fsign%3Df5988666e7f81a4c2667e4c1e71a4c6d%2Fb8014a90f603738d50dc3830bf1bb051f819ec0a.jpg",
+            classAName: "classB",
+            webUrl: "https://www.baidu.com/",
+            isOk: false,
+            classA: "classA",
+            classB: "classB",
+            blue: "blue",
+            styleSubject: {
+                fontSize: "19px",
+                color:"pink"
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
