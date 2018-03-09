@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="../../assets/js/vue.js"></script>
+    <script src="../../assets/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    {{message}}
+
+</div>
+
+<script>
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello Vue"
+        },
+        mounted: function () {
+            $("#app").html("我是Jquery");
+        },
+        methods: {
+            add: function () {
+                console.log("调用了内部的ADD方法");
+            }
+        }
+    });
+
+    app.add();
+
+</script>
+
+</body>
+</html>

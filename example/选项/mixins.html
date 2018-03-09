@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mixins</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <p>{{message}}</p>
+    <p>{{num}}</p>
+
+    <p>
+        <button @click="add">Add</button>
+    </p>
+
+</div>
+
+<script>
+
+    var addConsole = {
+        updated: function () {
+            console.log("数据发生变化");
+        }
+    };
+
+    //全局api方式
+    Vue.mixin({
+        updated: function () {
+            console.log("全局api的方式");
+        }
+    });
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello Vue",
+            num: 0
+        },
+        methods: {
+            add: function () {
+                this.message += "1";
+                this.num++;
+            }
+        },
+        updated: function () {
+            console.log("数据变化");
+        },
+        mixins: [addConsole]
+    });
+
+</script>
+
+</body>
+</html>

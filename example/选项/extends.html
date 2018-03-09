@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extends Options</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <p>{{message}}</p>
+    <p>{{num}}</p>
+
+    <p>
+        <button @click="add">Add</button>
+    </p>
+
+</div>
+
+<script>
+
+    var extrendsConsole = {
+        updated: function () {
+            console.log("数据发生变化");
+        }
+    };
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello Vue",
+            num: 0
+        },
+        methods: {
+            add: function () {
+                this.message += "1";
+                this.num++;
+            }
+        },
+        updated: function () {
+            console.log("数据变化");
+        },
+        //还能有一个拓展
+        extends: extrendsConsole
+    });
+
+</script>
+
+</body>
+</html>
