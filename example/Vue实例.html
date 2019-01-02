@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <p>姓名：{{name}}</p>
+    <p>年龄：{{age}}</p>
+    <p>住址：{{address}}</p>
+
+    <div v-html="log"></div>
+
+    <button @click="destroyComponent">销毁组件</button>
+</div>
+
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            name:"张三",
+            age:18,
+            address:"北京市",
+            log:""
+        },
+        methods:{
+            destroyComponent:function () {
+                console.log(vm.name);
+                vm.$destroy();
+            }
+        },
+        beforeCreate:function(){
+            this.log += "组件创建之前\n";
+        },
+        created:function () {
+            this.log += "组件创建之后\n";
+        },
+        beforeMount:function () {
+            this.log += "组件挂载之前\n";
+        },
+        mounted:function () {
+            this.log += "组件挂载之后\n";
+        },
+        beforeDestroy:function () {
+            this.log += "组件销毁之前\n";
+            console.log("组件销毁之前");
+        },
+        destroyed:function () {
+            this.log += "组件销毁之后\n";
+            console.log("组件销毁之后");
+        }
+    });
+</script>
+
+
+</body>
+</html>

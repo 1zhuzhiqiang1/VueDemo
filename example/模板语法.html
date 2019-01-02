@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1>插值</h1>
+
+    <h2>文本</h2>
+    <p>{{text}}</p>
+
+    <h2>原始HTML</h2>
+    <div v-html="html"></div>
+
+    <h2>特性</h2>
+    <button :disabled="disabledButton">这个按钮被禁用了</button>
+
+    <h2>Javascript表达式</h2>
+    <div>{{message.split('').reverse().join('')}}</div>
+
+    <h1>指令</h1>
+    <p>v-if</p>
+    <p>v-else</p>
+    <h3>参数</h3>
+    <h3>修饰符</h3>
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            text:"这是一行文本",
+            html:"<div style='color: red;'>字体应该是红色的</div>",
+            disabledButton:true,
+            message:"Hello Vue!!!"
+        }
+    })
+</script>
+
+</body>
+</html>

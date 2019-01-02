@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <p>输入的内容将会被反转</p>
+    <input type="text" placeholder="输入一串数字" v-model="message">
+    <div>{{reverseMessage}}</div>
+
+    <p>计算属性的 get/set </p>
+    <p>
+        <input type="text" placeholder="姓" v-model="xing">
+    </p>
+    <p>
+        <input type="text" placeholder="名" v-model="name">
+    </p>
+    <p>全名: {{fullName}}</p>
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            message:"",
+            xing:"",
+            name:""
+        },
+        computed:{
+            reverseMessage:function () {
+                return this.message.split('').reverse().join('');
+            },
+            fullName:{
+                get:function () {
+                    return this.xing+" "+this.name;
+                },
+                set:function (newValue) {
+                    console.log(newValue);
+                }
+            }
+        },
+        watch:{
+            name:function (newName, oldName) {
+                console.log("newName="+newName);
+                console.log("oldName="+oldName);
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
