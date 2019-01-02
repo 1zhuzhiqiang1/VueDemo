@@ -28,7 +28,7 @@ Vue.js使用了基于 html 的模板语法。 在底层实现上，Vue 将模板
 #### JavaScript 表达式
 1. 每个绑定都只能包含<b>单个</b>表达式
 
-###指令
+### 指令
 1. `v-if` `v-for` `v-bind` `v-on` 
 2. 一个指令可以接受一个参数，在指令名称之后用 `:` 表示 
 3. 修饰符
@@ -52,9 +52,7 @@ watch
 ### 绑定 HTML class
 
 #### 对象语法
-
 ```
-
 <div v-bind:class="{ active: isActive }"></div>
 
 <div class="static"
@@ -65,14 +63,10 @@ data: {
   isActive: true,
   hasError: false
 }
-
 ```
 
-
 绑定的数据对象不必内联定义在模板里：
-
 ``` 
-
 <div v-bind:class="classObject"></div> 
 
 data: {
@@ -84,7 +78,7 @@ data: {
 
 ```
 
-<big>我们也可以在这里绑定一个返回对象的计算属性</big>
+<big>我们也可以在这里绑定一个返回对象的<b>计算属性</b></big>
 
 ```
 <div v-bind:class="classObject"></div>
@@ -105,7 +99,6 @@ computed: {
 ```
 
 #### 数组语法
-
 ```
 data: {
   activeClass: 'active',
@@ -117,4 +110,61 @@ data: {
 <div v-bind:class="[{ active: isActive }, errorClass]"></div>
 
 ```
+#### 用在组件上
+当在一个自定义组件上使用 class 属性时，这些类将被添加到组件的根元素上，这个元素上已经存在的类不会被覆盖。
+
+### 绑定内联样式
+
+#### 对象语法
+`v-bind:style`
+
+基本用法
+`<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>`
+
+直接绑定到一个对象会让模板更加的清晰, 常常结合返回对象的计算属性使用
+`<div v-bind:style="styleObject"></div>`
+
+
+#### 数组语法
+将多个样式对象应用到同一个元素上
+`<div v-bind:style="[baseStyles, overridingStyles]"></div>`
+
+#### 多重值(2.3.0+)
+`<div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>`
+这样写只会渲染数组中最后一个被浏览器支持的值
+
+## 条件渲染
+### v-if
+1. 可以吧 <template> 当做一个不可见的包裹元素
+#### v-else
+```
+<div v-if="Math.random() > 0.5">
+  Now you see me
+</div>
+<div v-else>
+  Now you don't
+</div>
+```
+#### v-else-if(2.1.0 新增)
+```
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
+```
+类似于 v-else，v-else-if 也必须紧跟在带 v-if 或者 v-else-if 的元素之后。
+#### 使用key管理可以服用的元素
+
+
+### v-show
+始终会被渲染并保留在 dom 中，v-show 只是简单的改变 display 属性。
+v-show 不支持 <template> 元素，也不支持 v-else
 
